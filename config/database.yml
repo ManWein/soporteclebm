@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  pool: 5
+  timeout: 5000
+  username: postgres
+  password: 123
+
+development:
+  <<: *default
+  database: soprteclebm_development
+
+test: &test
+  <<: *default
+  database: soprteclebm_test
+
+production:
+  <<: *default
+  database: soprteclebm_production
+  username: soprteclebm
+  password: <%= ENV['SOPRTECLEBM_DATABASE_PASSWORD'] %>
