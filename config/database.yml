@@ -9,14 +9,14 @@ default: &default
 
 development:
   <<: *default
-  database: soprteclebm_development
+  database: soporteclebm_development
 
 test: &test
   <<: *default
-  database: soprteclebm_test
+  database: soporteclebm_test
 
 production:
   <<: *default
-  database: soprteclebm_production
-  username: soprteclebm
-  password: <%= ENV['SOPRTECLEBM_DATABASE_PASSWORD'] %>
+  database: soporteclebm_production
+#  username: soporteclebm
+#  password: <%= ENV['SOPRTECLEBM_DATABASE_PASSWORD'] %>
