@@ -1,6 +1,6 @@
-ActiveAdmin.register Manager do
+ActiveAdmin.register Applicant do
   menu parent: "Users"
-  permit_params :email, :password, :password_confirmation, :type, :active, :manager_info_attributes => [:id, :name, :username]
+  permit_params :email, :password, :password_confirmation, :type, :active, :applicant_info_attributes => [:id, :name, :username]
 
   index do
     selectable_column
@@ -20,12 +20,12 @@ ActiveAdmin.register Manager do
   filter :created_at
 
   form do |f|
-    f.inputs "Manager Details" do
+    f.inputs "Applicant Details" do
       f.input :email
       f.input :active
       f.input :password
       f.input :password_confirmation
-      f.inputs "Basic Info", for: [:manager_info, (f.object.manager_info || ManagerInfo.new)] do |t|
+      f.inputs "Basic Info", for: [:applicant_info, (f.object.applicant_info || ApplicantInfo.new)] do |t|
         t.input :id, as: :hidden
         t.input :name
         t.input :username

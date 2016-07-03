@@ -1,0 +1,6 @@
+h1 Main dashboard
+h2
+  | Nombre:
+  = current_user.type
+
+= link_to 'Logout', destroy_user_session_path, {method: :delete}
