@@ -1,0 +1,16 @@
+h1 Main dashboard Es el manager
+h2
+  | Nombre:
+  = current_user.type
+
+= link_to('Solicitudes', solicitudes_path, {clas: ''})
+= ' | '
+= link_to('Usuarios', root_path, {clas: ''})
+= ' | '
+= link_to('Analistas', root_path, {clas: ''})
+= ' | '
+= link_to('Equipos', root_path, {clas: ''})
+= ' | '
+= link_to('Componentes', root_path, {clas: ''})
+= ' | '
+= link_to('Impresoras', root_path, {clas: ''})

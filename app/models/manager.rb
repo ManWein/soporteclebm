@@ -5,7 +5,7 @@ class Manager < User
   validates_presence_of :manager_info
     
   def sign_in_path
-     Rails.application.routes.url_helpers.root_path
+    Rails.application.routes.url_helpers.dashboard_manager_path(self)
   end
 
   def self.permited_params

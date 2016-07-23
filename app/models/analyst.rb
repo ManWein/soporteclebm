@@ -2,6 +2,9 @@ class Analyst < User
   has_one :analyst_info
   accepts_nested_attributes_for :analyst_info
 
+  has_many :solicituds
+  accepts_nested_attributes_for :solicituds, :allow_destroy => true
+
   validates_presence_of :analyst_info
     
   def sign_in_path
