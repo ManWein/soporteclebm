@@ -9,4 +9,22 @@ html
     = csrf_meta_tags
 
   body
-    = yield
+    nav.navbar.navbar-default.navbar-fixed-top.grad-navbar
+      .container.nav-content
+        .navbar-header.margin-right-logo
+          a.navbar-brand.nav-logo.nav-logo-image.nav-logo-image-black href="#{root_path}"
+            /= image_tag("logo-black-sin.png")
+
+        #navbar.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            li
+              a.color-text-dark.box-car
+                /= image_tag("white-cart.png", {class: "icon-form-control"})
+                /span.badge-car = @shopping_cart_count ? @shopping_cart_count : 0
+
+            - if current_user
+              li.divider-vertical
+                = link_to('Elimi', destroy_user_session_path, :method => :delete, :class => "color-text-dark.box-exit")
+
+    .container-with-nav-dashboard
+      = yield
