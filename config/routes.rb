@@ -25,6 +25,16 @@ Rails.application.routes.draw do
   resources :analysts
 
   resources :solicitudes
+  resources :mice
+  resources :regulators
+  resources :keyboards
+  resources :monitors
+  resources :cpus
+
+
+  get "/componentes", to: 'main#componentes'
+
+
 
   get '/componentes', to: 'main#componentes'
 
