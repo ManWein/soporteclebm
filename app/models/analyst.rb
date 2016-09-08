@@ -15,4 +15,12 @@ class Analyst < User
     [:type, :email, :password, :password_confirmation, analyst_info_attributes: ([:name, :username])]
   end
 
+  def name
+    self.analyst_info.blank? ? "N/A" : self.analyst_info.name
+  end
+
+  def username
+    self.analyst_info.blank? ? "N/A" : self.analyst_info.username
+  end
+
 end
