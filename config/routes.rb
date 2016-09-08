@@ -23,5 +23,15 @@ Rails.application.routes.draw do
   end
 
   resources :solicitudes
+  resources :mice
+  resources :regulators
+  resources :keyboards
+  resources :monitors
+  resources :cpus
+
+
+  get "/componentes", to: 'main#componentes'
+
+
 
 end

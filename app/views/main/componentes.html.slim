@@ -1,0 +1,18 @@
+h1 Componentes
+h2
+  | Nombre: 
+  = current_user.type
+
+ul
+  li
+    = link_to('Ratones', mice_path, { class: ''})
+  li
+    = link_to('Reguladores', regulators_path, { class: ''})
+  li
+    = link_to('Teclados', keyboards_path, { class: ''})
+  li
+    = link_to('Monitores', monitors_path, { class: ''})
+  li
+    = link_to('CPUS', cpus_path, { class: ''})
+br
+=link_to("Back", dashboard_manager_path(current_user))
