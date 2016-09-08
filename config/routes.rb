@@ -22,6 +22,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :analysts
+
   resources :solicitudes
   resources :mice
   resources :regulators
@@ -33,5 +35,7 @@ Rails.application.routes.draw do
   get "/componentes", to: 'main#componentes'
 
 
+
+  get '/componentes', to: 'main#componentes'
 
 end
