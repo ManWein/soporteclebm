@@ -22,6 +22,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :analysts
+
   resources :solicitudes
+
+  get '/componentes', to: 'main#componentes'
 
 end
