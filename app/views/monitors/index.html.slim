@@ -1,4 +1,4 @@
-h1 Solicitudes
+h1 Monitores
 
 table.table.table-hover
   thead
@@ -9,11 +9,11 @@ table.table.table-hover
       th# Fecha
       th#
   tbody
-    - if @solicitudes.blank?
+    /- if @solicitudes.blank?
       tr
         - (0..4).each do |v|
           td -
-    - else
+    /- else
       - @solicitudes.each do |s|
         tr
           td = truncate(s.description, length: 17)
@@ -24,4 +24,4 @@ table.table.table-hover
             = link_to "Edit", edit_solicitude_path(s)
             = link_to "Delete", solicitude_path(s), {data: {confirm: 'Are you sure?'}, method: :delete}
 
-= link_to "Back", dashboard_manager_path(current_user)
+= link_to "Back", componentes_path
