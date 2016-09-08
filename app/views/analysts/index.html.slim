@@ -1,35 +1,27 @@
 h1
   | Analysts
-  = link_to "(New)", new_user_registration_path('analyst')
+  = link_to "(New)", new_analyst_path
 
 table.table.table-hover
   thead
     tr
-      th# Descripción
-      th# Estado
-      th# Analista
-      th# Fecha
+      th# Email
+      th# Name
+      th# Username
       th#
   tbody
-    tr
-      td
-      td
-      td
-      td
-      td
-    /- if @solicitudes.blank?
+    - if @analysts.blank?
       tr
-        - (0..4).each do |v|
+        - (0..3).each do |a|
           td -
-    /- else
-      - @solicitudes.each do |s|
+    - else
+      - @analysts.each do |a|
         tr
-          td = truncate(s.description, length: 17)
-          td = s.estado
-          td = s.analyst.blank? ? 'N/A' : s.analyst.analyst_info.name
-          td = s.created_at
-          td.vanity-actions 
-            = link_to "Edit", edit_solicitude_path(s)
-            = link_to "Delete", solicitude_path(s), {data: {confirm: 'Are you sure?'}, method: :delete}
+          td = a.email
+          td = a.name
+          td = a.username
+          td.vanity-actions
+            = link_to "Edit", edit_analyst_path(a)
+            = link_to "Delete", analyst_path(a), {data: {confirm: 'Are you sure?'}, method: :delete}
 
 = link_to "Back", dashboard_manager_path(current_user)
