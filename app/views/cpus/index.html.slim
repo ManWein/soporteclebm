@@ -1,27 +1,50 @@
-h1 CPUs / Laptops
+h1 
+  | CPUS
+  = link_to "(New)", new_cpu_path
+
 
 table.table.table-hover
   thead
     tr
-      th# Descripción
-      th# Estado
-      th# Analista
-      th# Fecha
+      th# Marca
+      th# Modelo
+      th# Serial
+      th# Bien Nacional
+      th# Tarjeta Madre
+      th# Procesador
+      th# Memoria Ram
+      th# Disco Duro
+      th# CD-Rom
+      th# Sistema Operativo
+      th# En Red
+      th# Software Extra
+      th# Estatus de Servicio
+      th# Tipo
       th#
   tbody
-    /- if @solicitudes.blank?
+    - if @cpus.blank?
       tr
-        - (0..4).each do |v|
+        - (0..14).each do |c|
           td -
-    /- else
-      - @solicitudes.each do |s|
+    - else
+      - @cpus.each do |c|
         tr
-          td = truncate(s.description, length: 17)
-          td = s.estado
-          td = s.analyst.blank? ? 'N/A' : s.analyst.analyst_info.name
-          td = s.created_at
+          td = c.marca
+          td = c.modelo
+          td = c.serial
+          td = c.bien_nacional
+          td = c.tarjeta_madre
+          td = c.procesador
+          td = c.memoria_ram
+          td = c.disco_duro
+          td = c.cdrom
+          td = c.sistema_operativo
+          td = c.en_red
+          td = c.software_extra
+          td = c.estatus_servicio
+          td = c.tipo
           td.vanity-actions 
-            = link_to "Edit", edit_solicitude_path(s)
-            = link_to "Delete", solicitude_path(s), {data: {confirm: 'Are you sure?'}, method: :delete}
+            = link_to "Edit", edit_cpu_path(c)
+            = link_to "Delete", cpu_path(c), {data: {confirm: 'Are you sure?'}, method: :delete}
 
 = link_to "Back", componentes_path

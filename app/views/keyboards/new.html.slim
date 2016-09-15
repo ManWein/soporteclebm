@@ -1,0 +1,24 @@
+.container
+  h1
+    | New
+    = link_to "(Back)", keyboards_path
+
+  = form_for(Keyboard.new, as: "keyboard", url: keyboards_path) do |f|
+    .field
+      = f.text_field :marca, {class: '', required:''}
+      = f.label :marca, "Marca", {class: ''}
+
+    .field
+      = f.text_field :modelo, {class: '', required:''}
+      = f.label :modelo, "Modelo", {class: ''}
+
+    .field
+      = f.text_field :serial, {class: '', required:''}
+      = f.label :serial, "Serial", {class: ''}
+
+    .field
+      = f.text_field :bien_nacional, {class: '', required:''}
+      = f.label :bien_nacional, "Bien nacional", {class: ''}
+
+    .actions
+      = f.submit "Create"
