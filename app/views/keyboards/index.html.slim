@@ -1,27 +1,30 @@
-h1 Teclados
+h1 
+  | Keyboards
+  = link_to "(New)", new_keyboard_path
+
 
 table.table.table-hover
   thead
     tr
-      th# Descripción
-      th# Estado
-      th# Analista
-      th# Fecha
+      th# Marca
+      th# Modelo
+      th# Serial
+      th# Bien Nacional
       th#
   tbody
-    /- if @solicitudes.blank?
+    - if @keyboards.blank?
       tr
-        - (0..4).each do |v|
+        - (0..4).each do |k|
           td -
-    /- else
-      - @solicitudes.each do |s|
+    - else
+      - @keyboards.each do |k|
         tr
-          td = truncate(s.description, length: 17)
-          td = s.estado
-          td = s.analyst.blank? ? 'N/A' : s.analyst.analyst_info.name
-          td = s.created_at
+          td = k.marca
+          td = k.modelo
+          td = k.serial
+          td = k.bien_nacional
           td.vanity-actions 
-            = link_to "Edit", edit_solicitude_path(s)
-            = link_to "Delete", solicitude_path(s), {data: {confirm: 'Are you sure?'}, method: :delete}
+            = link_to "Edit", edit_keyboard_path(k)
+            = link_to "Delete", keyboard_path(k), {data: {confirm: 'Are you sure?'}, method: :delete}
 
 = link_to "Back", componentes_path

@@ -1,27 +1,30 @@
-h1 Reguladores
+h1 
+  | Regulators
+  = link_to "(New)", new_regulator_path
+
 
 table.table.table-hover
   thead
     tr
-      th# Descripción
-      th# Estado
-      th# Analista
-      th# Fecha
+      th# Marca
+      th# Modelo
+      th# Serial
+      th# Bien Nacional
       th#
   tbody
-    /- if @solicitudes.blank?
+    - if @regulators.blank?
       tr
-        - (0..4).each do |v|
+        - (0..4).each do |r|
           td -
-    /- else
-      - @solicitudes.each do |s|
+    - else
+      - @regulators.each do |r|
         tr
-          td = truncate(s.description, length: 17)
-          td = s.estado
-          td = s.analyst.blank? ? 'N/A' : s.analyst.analyst_info.name
-          td = s.created_at
+          td = r.marca
+          td = r.modelo
+          td = r.serial
+          td = r.bien_nacional
           td.vanity-actions 
-            = link_to "Edit", edit_solicitude_path(s)
-            = link_to "Delete", solicitude_path(s), {data: {confirm: 'Are you sure?'}, method: :delete}
+            = link_to "Edit", edit_regulator_path(r)
+            = link_to "Delete", regulator_path(r), {data: {confirm: 'Are you sure?'}, method: :delete}
 
 = link_to "Back", componentes_path

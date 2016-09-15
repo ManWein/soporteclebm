@@ -1,27 +1,32 @@
-h1 Monitores
+h1 
+  | Monitors
+  = link_to "(New)", new_monitor_path
+
 
 table.table.table-hover
   thead
     tr
-      th# Descripción
-      th# Estado
-      th# Analista
-      th# Fecha
+      th# Marca
+      th# Modelo
+      th# Serial
+      th# Bien Nacional
+      th# Pulgadas
       th#
   tbody
-    /- if @solicitudes.blank?
+    - if @monitors.blank?
       tr
-        - (0..4).each do |v|
+        - (0..5).each do |m|
           td -
-    /- else
-      - @solicitudes.each do |s|
+    - else
+      - @monitors.each do |m|
         tr
-          td = truncate(s.description, length: 17)
-          td = s.estado
-          td = s.analyst.blank? ? 'N/A' : s.analyst.analyst_info.name
-          td = s.created_at
+          td = m.marca
+          td = m.modelo
+          td = m.serial
+          td = m.bien_nacional
+          td = m.pulgadas
           td.vanity-actions 
-            = link_to "Edit", edit_solicitude_path(s)
-            = link_to "Delete", solicitude_path(s), {data: {confirm: 'Are you sure?'}, method: :delete}
+            = link_to "Edit", edit_monitor_path(m)
+            = link_to "Delete", monitor_path(m), {data: {confirm: 'Are you sure?'}, method: :delete}
 
 = link_to "Back", componentes_path
