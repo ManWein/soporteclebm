@@ -1,0 +1,33 @@
+h1
+  | Solicitudes
+  = link_to "(New)", new_solicitud_path
+
+table.table.table-hover
+  thead
+    tr
+      th# Descripción
+      th# Estado
+      th# Analista
+      th# Fecha
+      th#
+  tbody
+    - if @solicituds.blank?
+      tr
+        - (0..4).each do |v|
+          td -
+    - else
+      - @solicituds.each do |s|
+        tr
+          td = truncate(s.description, length: 17)
+          td = s.estado
+          td = s.analyst.blank? ? 'N/A' : s.analyst.analyst_info.name
+          td = s.created_at
+          td.vanity-actions
+            - unless s.report.blank?
+              = link_to "Reportes", report_path(s.set_report)
+            - else
+              = "Peo"
+            = link_to "Edit", edit_solicitud_path(s)
+            = link_to "Delete", solicitud_path(s), {data: {confirm: 'Are you sure?'}, method: :delete}
+
+= link_to "Back", dashboard_manager_path(current_user)

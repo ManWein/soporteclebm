@@ -1,4 +1,5 @@
 ActiveAdmin.register Computer do
+  menu parent: "Componentes"
   permit_params :marca, :modelo, :serial, :bien_nacional, :tarjeta_madre, :procesador, :memoria_ram, :disco_duro, :cdrom, :sistema_operativo, :en_red, :software_extra, :estatus_servicio, :tipo, :estatus, :keyboard_attributes => [:id, :marca, :modelo, :serial, :bien_nacional, :estatus], :screen_attributes => [:id, :marca, :modelo, :serial, :bien_nacional, :pulgadas, :estatus], :mouse_attributes => [:id, :marca, :modelo, :serial, :bien_nacional, :estatus], :regulator_attributes => [:id, :marca, :modelo, :serial, :bien_nacional, :estatus]
 
   index do

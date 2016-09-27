@@ -9,7 +9,15 @@ class Applicant < User
   end
 
   def self.permited_params
-    [:type, :email, :password, :password_confirmation, manager_info_attributes: ([:name, :username])]
+    [:type, :email, :password, :password_confirmation, applicant_info_attributes: ([:name, :username])]
+  end
+
+  def name
+    self.applicant_info.blank? ? "N/A" : self.applicant_info.name
+  end
+
+  def username
+    self.applicant_info.blank? ? "N/A" : self.applicant_info.username
   end
 
 end
