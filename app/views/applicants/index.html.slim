@@ -1,0 +1,27 @@
+h1
+  | Usuarios
+  = link_to "(New)", new_applicant_path
+
+table.table.table-hover
+  thead
+    tr
+      th# Email
+      th# Name
+      th# Username
+      th#
+  tbody
+    - if @applicants.blank?
+      tr
+        - (0..3).each do |a|
+          td -
+    - else
+      - @applicants.each do |a|
+        tr
+          td = a.email
+          td = a.name
+          td = a.username
+          td.vanity-actions
+            = link_to "Edit", edit_applicant_path(a)
+            = link_to "Delete", applicant_path(a), {data: {confirm: 'Are you sure?'}, method: :delete}
+
+= link_to "Back", dashboard_manager_path(current_user)

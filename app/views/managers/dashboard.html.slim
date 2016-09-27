@@ -3,9 +3,9 @@ h2
   | Nombre:
   = current_user.type
 
-= link_to('Solicitudes', solicitudes_path, {clas: ''})
+= link_to('Solicitudes', solicituds_path, {clas: ''})
 = ' | '
-= link_to('Usuarios', root_path, {clas: ''})
+= link_to('Usuarios', applicants_path, {clas: ''})
 = ' | '
 = link_to('Analistas', analysts_path, {clas: ''})
 = ' | '
@@ -13,4 +13,6 @@ h2
 = ' | '
 = link_to('Componentes', componentes_path, {clas: ''})
 = ' | '
-= link_to('Impresoras', root_path, {clas: ''})
+= link_to('Impresoras', printers_path, {clas: ''})
+= ' | '
+= link_to('reportes', reports_path, {clas: ''})

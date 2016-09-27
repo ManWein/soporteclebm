@@ -1,0 +1,30 @@
+h1 
+  | Printers
+  = link_to "(New)", new_printer_path
+
+
+table.table.table-hover
+  thead
+    tr
+      th# Marca
+      th# Modelo
+      th# Serial
+      th# Bien Nacional
+      th#
+  tbody
+    - if @printers.blank?
+      tr
+        - (0..4).each do |p|
+          td -
+    - else
+      - @printers.each do |p|
+        tr
+          td = p.marca
+          td = p.modelo
+          td = p.serial
+          td = p.bien_nacional
+          td.vanity-actions 
+            = link_to "Edit", edit_printer_path(p)
+            = link_to "Delete", printer_path(p), {data: {confirm: 'Are you sure?'}, method: :delete}
+
+= link_to "Back", dashboard_manager_path(current_user)

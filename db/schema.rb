@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160723151859) do
+ActiveRecord::Schema.define(version: 20160924005615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,6 +115,23 @@ ActiveRecord::Schema.define(version: 20160723151859) do
     t.datetime "updated_at"
   end
 
+  create_table "offices", force: :cascade do |t|
+    t.string   "nombre"
+    t.boolean  "estatus",    default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "printers", force: :cascade do |t|
+    t.string   "marca"
+    t.string   "modelo"
+    t.string   "serial"
+    t.string   "bien_nacional"
+    t.boolean  "estatus",       default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "regulators", force: :cascade do |t|
     t.integer  "computer_id"
     t.string   "marca"
@@ -122,6 +139,15 @@ ActiveRecord::Schema.define(version: 20160723151859) do
     t.string   "serial"
     t.string   "bien_nacional"
     t.boolean  "estatus",       default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.integer  "solicitud_id"
+    t.integer  "tipo_servicio"
+    t.text     "detalle_servicio"
+    t.boolean  "estatus",          default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
