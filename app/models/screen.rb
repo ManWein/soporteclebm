@@ -4,7 +4,11 @@ class Screen < ActiveRecord::Base
   accepts_nested_attributes_for :computer, allow_destroy: true
 
   def self.permited_params
-    [:marca, :modelo, :serial, :bien_nacional, :pulgadas]
+    [:computer_id, :marca, :modelo, :serial, :bien_nacional, :pulgadas, :estatus]
+  end
+
+  def set_computer
+    self.computer.blank? ? 0 : self.computer    
   end
 
 end

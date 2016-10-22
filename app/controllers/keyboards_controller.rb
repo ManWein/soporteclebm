@@ -25,9 +25,12 @@ class KeyboardsController < ApplicationController
   end
   
   def update
-  end
-  
-  def update
+    if @keyboard.update_attributes!(params_keyboard)
+      redirect_to keyboards_path, notice: 'Keyboard updated successfully'
+    else
+      flash[:notice] = "Some of the fields placed errors. Please check information and try again"
+      render :edit
+    end
   end
   
   def destroy

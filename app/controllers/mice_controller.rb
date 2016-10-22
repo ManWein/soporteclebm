@@ -25,9 +25,12 @@ class MiceController < ApplicationController
   end
   
   def update
-  end
-  
-  def update
+    if @mouse.update_attributes!(params_mouse)
+      redirect_to mice_path, notice: 'Mouse updated successfully'
+    else
+      flash[:notice] = "Some of the fields placed errors. Please check information and try again"
+      render :edit
+    end
   end
   
   def destroy

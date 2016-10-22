@@ -12,4 +12,12 @@ class Manager < User
     [:type, :email, :password, :password_confirmation, manager_info_attributes: ([:name, :username])]
   end
 
+  def name
+    self.manager_info.blank? ? "N/A" : self.manager_info.name
+  end
+
+  def username
+    self.manager_info.blank? ? "N/A" : self.manager_info.username
+  end
+
 end

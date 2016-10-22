@@ -6,6 +6,7 @@ h1
 table.table.table-hover
   thead
     tr
+      th# CPU
       th# Marca
       th# Modelo
       th# Serial
@@ -20,6 +21,7 @@ table.table.table-hover
     - else
       - @monitors.each do |m|
         tr
+          td = link_to "#{m.computer_id}", cpu_path(m.set_computer)
           td = m.marca
           td = m.modelo
           td = m.serial

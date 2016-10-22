@@ -6,6 +6,7 @@ h1
 table.table.table-hover
   thead
     tr
+      th# CPU
       th# Marca
       th# Modelo
       th# Serial
@@ -19,11 +20,15 @@ table.table.table-hover
     - else
       - @mice.each do |m|
         tr
+          /td = m.computer_id
+          td = link_to "#{m.computer_id}", cpu_path(m.set_computer)
           td = m.marca
           td = m.modelo
           td = m.serial
           td = m.bien_nacional
-          td.vanity-actions 
+          td.vanity-actions
+            /- unless m.computer.blank?
+            /  = link_to "CPU", cpu_path(m.set_computer)
             = link_to "Edit", edit_mouse_path(m)
             = link_to "Delete", mouse_path(m), {data: {confirm: 'Are you sure?'}, method: :delete}
 

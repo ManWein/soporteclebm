@@ -1,0 +1,16 @@
+.container
+  h1
+    | New
+    = link_to "(Back)", solicituds_path
+
+  = form_for(Solicitud.new, as: "solicitud", url: solicituds_path) do |f|
+    .field
+      = f.text_area :description, {class: '', required:''}
+      = f.label :description, "Descripción", {class: ''}
+
+    .field
+      = f.select :estado,  SolicitudStatus.to_a
+      = f.label :estado, "Estado", {class: ''}
+
+    .actions
+      = f.submit "Create"

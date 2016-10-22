@@ -1,0 +1,30 @@
+h1 
+  | Reportes
+  = link_to "(New)", new_report_path
+
+
+table.table.table-hover
+  thead
+    tr
+      th# solicitud_id
+      th# tipo_servicio
+      th# detalle_servicio
+      th# estatus
+      th#
+  tbody
+    - if @reports.blank?
+      tr
+        - (0..4).each do |r|
+          td -
+    - else
+      - @reports.each do |r|
+        tr
+          td = r.solicitud_id
+          td = r.tipo_servicio
+          td = r.detalle_servicio
+          td = r.estatus
+          td.vanity-actions 
+            = link_to "Edit", edit_report_path(r)
+            = link_to "Delete", report_path(r), {data: {confirm: 'Are you sure?'}, method: :delete}
+
+= link_to "Back", dashboard_manager_path(current_user)
