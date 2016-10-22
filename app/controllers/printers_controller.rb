@@ -25,9 +25,12 @@ class PrintersController < ApplicationController
   end
   
   def update
-  end
-  
-  def update
+    if @printer.update_attributes!(params_printer)
+      redirect_to printers_path, notice: 'Printer updated successfully'
+    else
+      flash[:notice] = "Some of the fields placed errors. Please check information and try again"
+      render :edit
+    end
   end
   
   def destroy

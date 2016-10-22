@@ -9,6 +9,19 @@ html
     = csrf_meta_tags
 
   body
+    = render partial: 'layouts/header'
+    main
+      .row
+        .col.s12.dashboard-content
+          = yield
+  
+  javascript:
+    $(document).ready(function() {
+      $(".button-collapse").sideNav();
+      $('select').material_select();
+    });
+
+  /body
     nav.navbar.navbar-default.navbar-fixed-top.grad-navbar
       .container.nav-content
         .navbar-header.margin-right-logo

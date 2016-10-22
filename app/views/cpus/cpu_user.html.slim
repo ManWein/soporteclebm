@@ -1,0 +1,34 @@
+h1 
+  | Equipos Asignados
+  = link_to "(New)", cpu_user_new_path
+
+
+table.table.table-hover
+  thead
+    tr
+      th# Usuario
+      th# Marca
+      th# Modelo
+      th# Serial
+      th# Bien Nacional
+      th# Desktop/Laptop
+  tbody
+    - if @cpus.blank?
+      tr
+        - (0..5).each do |c|
+          td -
+    - else
+      - @cpus.each do |c|
+        tr
+          td = c.applicants.blank? ? "Sin asignar" : c.applicants.first.id
+          td = c.marca
+          td = c.modelo
+          td = c.serial
+          td = c.bien_nacional
+          td = ComputerType.key_for(c.tipo).to_s.humanize
+          td.vanity-actions 
+            /= link_to "Edit", edit_cpu_path(c)
+            - unless c.applicants.blank?
+              = link_to "Delete", "/cpu_user_delete/#{c.id}/#{c.applicants.first.id}", {data: {confirm: 'Are you sure?'}, method: :delete}
+
+= link_to "Back", dashboard_manager_path(current_user)

@@ -25,9 +25,12 @@ class RegulatorsController < ApplicationController
   end
   
   def update
-  end
-  
-  def update
+    if @regulator.update_attributes!(params_regulator)
+      redirect_to regulators_path, notice: 'Regulator updated successfully'
+    else
+      flash[:notice] = "Some of the fields placed errors. Please check information and try again"
+      render :edit
+    end
   end
   
   def destroy

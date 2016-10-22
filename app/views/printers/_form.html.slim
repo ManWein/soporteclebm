@@ -1,0 +1,26 @@
+.container
+  h1
+    = "#{action}"
+    = link_to "(Back)", printers_path
+
+  = form_for(printer, url: (action == 'ADD') ? printers_path : printer_path(printer)) do |f|
+    .field
+      = f.text_field :marca, {class: '', required:''}
+      = f.label :marca, "Marca", {class: ''}
+
+    .field
+      = f.text_field :modelo, {class: '', required:''}
+      = f.label :modelo, "Modelo", {class: ''}
+
+    .field
+      = f.text_field :serial, {class: '', required:''}
+      = f.label :serial, "Serial", {class: ''}
+
+    .field
+      = f.text_field :bien_nacional, {class: '', required:''}
+      = f.label :bien_nacional, "Bien nacional", {class: ''}
+
+    .actions
+      = button_tag
+        = (action == 'ADD') ? 'Create' : 'Update'
+

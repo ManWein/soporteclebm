@@ -1,6 +1,10 @@
 class Applicant < User
   has_one :applicant_info
   accepts_nested_attributes_for :applicant_info
+  
+  has_many :applicant_computers
+  has_many :computers, through: :applicant_computers
+
 
   validates_presence_of :applicant_info
     

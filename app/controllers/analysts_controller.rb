@@ -25,9 +25,12 @@ class AnalystsController < ApplicationController
   end
 
   def update
-  end
-
-  def update
+    if @analyst.update_attributes!(params_analyst)
+      redirect_to analysts_path, notice: 'Analista updated successfully'
+    else
+      flash[:notice] = "Some of the fields placed errors. Please check information and try again"
+      render :edit
+    end
   end
 
   def destroy

@@ -25,9 +25,12 @@ class MonitorsController < ApplicationController
   end
   
   def update
-  end
-  
-  def update
+    if @monitor.update_attributes!(params_monitor)
+      redirect_to monitors_path, notice: 'Monitor updated successfully'
+    else
+      flash[:notice] = "Some of the fields placed errors. Please check information and try again"
+      render :edit
+    end
   end
   
   def destroy
@@ -37,7 +40,7 @@ class MonitorsController < ApplicationController
   
   private
     def find_monitor
-      @monitor= Screen.find_by_id(params[:id])
+      @monitor = Screen.find_by_id(params[:id])
     end
 
     def all_monitors
@@ -45,7 +48,7 @@ class MonitorsController < ApplicationController
     end
 
     def params_monitor
-      params.require(:monitor).permit(Screen.permited_params)
+      params.require(:screen).permit(Screen.permited_params)
     end
 
 end
