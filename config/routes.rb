@@ -35,10 +35,28 @@ Rails.application.routes.draw do
   resources :reports
 
 
+
   get "/componentes", to: 'main#componentes'
 
-
-
   get '/componentes', to: 'main#componentes'
+
+  get '/cpu_user', to: 'cpus#cpu_user'
+
+  get :cpu_user_new, to: 'cpus#cpu_user_new'
+
+  post :cpu_user_new, to: 'cpus#cpu_user_create'
+
+  delete '/cpu_user_delete/:cpu_id/:user_id', to: 'cpus#cpu_user_delete'
+
+  get '/analyst_solicitud', to: 'solicituds#analyst_solicitud'
+
+  get :analyst_solicitud_new, to: 'solicituds#analyst_solicitud_new'
+
+  post :analyst_solicitud_new, to: 'solicituds#analyst_solicitud_create'
+
+  delete '/analyst_solicitud_delete/:analyst_id/:solicitud_id', to: 'solicituds#analyst_solicitud_delete'
+
+
+
 
 end

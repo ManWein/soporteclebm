@@ -1,0 +1,25 @@
+.container
+  h1
+    = "#{action}"
+    = link_to "(Back)", reports_path
+
+  = form_for(report, url: (action == 'ADD') ? reports_path : report_path(report)) do |f|
+    .field
+      = f.select :solicitud_id, Solicitud.all.collect { |s| [ s.description, s.id ] }, include_blank: true
+      = f.label :solicitud_id, "Solicitud", {class: ''}
+
+    .field
+      = f.select :tipo_servicio,  ServiceType.to_a
+      = f.label :tipo_servicio, "Tipo de Sevicio", {class: ''}
+
+    .field
+      = f.text_area :detalle_servicio, {class: '', required:''}
+      = f.label :detalle_servicio, "Detalle de Servicio", {class: ''}
+
+    .field
+      = f.text_field :estatus, {class: '', required:''}
+      = f.label :estatus, "Estatus", {class: ''}
+
+    .actions
+      = button_tag
+        = (action == 'ADD') ? 'Create' : 'Update'

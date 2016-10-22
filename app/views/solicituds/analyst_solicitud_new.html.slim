@@ -1,0 +1,19 @@
+.container
+  h1
+    = link_to "(Back)", analyst_solicitud_path
+
+  = form_for analyst_solicitud_new_path do
+
+    .field
+      = select_tag :analyst_id, options_for_select(Analyst.where.not(id: AnalystSolicitud.all.map {|a| a.analyst_id}).map {|a| [a.name, a.id]})
+      = label_tag :analyst, "Analista", {class: ''}
+    .field
+      = select_tag :solicitud_id, options_for_select(Solicitud.where.not(id: AnalystSolicitud.all.map {|s| s.solicitud_id}).map {|a| [a.id, a.id]})
+      = label_tag :solicitud_id, "Solicitud", {class: ''}
+
+    .actions
+      = button_tag type: 'submit' do
+        = 'create'
+/ Consulta para filtrar listas.
+/Applicant.where.not(id: ApplicantComputer.all.map {|a| a.applicant_id})
+/Computer.where.not(id: ApplicantComputer.all.map {|a| a.computer_id})

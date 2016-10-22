@@ -1,20 +1,21 @@
 ActiveAdmin.register Solicitud do
+  menu parent: "Solicitudes"
   permit_params :description, :estado
 
   index do
     selectable_column
     id_column
-    column :nombre
+    column :description
     column :estado
     actions
   end
 
-  filter :nombre
+  filter :description
   filter :estado
 
   form do |f|
     f.inputs "Solocitud Details" do
-      f.input :nombre
+      f.input :description
       f.input :estado
     end
     f.actions

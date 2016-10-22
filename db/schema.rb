@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160924005615) do
+ActiveRecord::Schema.define(version: 20161021235050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,12 +57,34 @@ ActiveRecord::Schema.define(version: 20160924005615) do
     t.datetime "updated_at"
   end
 
+  create_table "analyst_solicituds", force: :cascade do |t|
+    t.integer  "analyst_id"
+    t.integer  "solicitud_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "analyst_solicituds", ["analyst_id"], name: "index_analyst_solicituds_on_analyst_id", using: :btree
+  add_index "analyst_solicituds", ["solicitud_id"], name: "index_analyst_solicituds_on_solicitud_id", using: :btree
+
+  create_table "applicant_computers", force: :cascade do |t|
+    t.integer  "applicant_id"
+    t.integer  "computer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "applicant_computers", ["applicant_id"], name: "index_applicant_computers_on_applicant_id", using: :btree
+  add_index "applicant_computers", ["computer_id"], name: "index_applicant_computers_on_computer_id", using: :btree
+
   create_table "applicant_infos", force: :cascade do |t|
     t.integer  "applicant_id"
     t.string   "name"
     t.string   "username"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "cedula"
+    t.string   "tlf"
   end
 
   create_table "computers", force: :cascade do |t|

@@ -25,9 +25,12 @@ class ApplicantsController < ApplicationController
   end
 
   def update
-  end
-
-  def update
+    if @applicant.update_attributes!(params_applicant)
+      redirect_to applicants_path, notice: 'Usuario updated successfully'
+    else
+      flash[:notice] = "Some of the fields placed errors. Please check information and try again"
+      render :edit
+    end
   end
 
   def destroy

@@ -1,7 +1,7 @@
 class SolicitudsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :find_solicitud, only: [:show, :edit, :update, :destroy]
-  before_filter :all_solicituds, only: [:index]
+  before_filter :all_solicituds, only: [:index, :analyst_solicitud]
 
   #index #create #new #edit #show #update #update #destroy 
 
@@ -35,6 +35,29 @@ class SolicitudsController < ApplicationController
     redirect_to solicituds_path
   end
 
+  def analyst_solicitud
+  end
+
+  def analyst_solicitud_new
+  end
+
+  def analyst_solicitud_create
+    @analyst = AnalystSolicitud.new(params_analyst_solicitud)
+    if @analyst.save!
+      redirect_to analyst_solicitud_path, notice: 'Analyst Associated successfully'
+    else
+      render :new
+    end
+  end
+
+  def analyst_solicitud_delete
+    @ana_sol = AnalystSolicitud.where(analyst_id: params[:user_id], solicitud_id: params[:solicitud_id]).first
+    unless @ana_sol.blank?
+      @ana_sol.destroy
+    end
+    redirect_to analyst_solicitud_path
+  end
+
   private
 
     def find_solicitud
@@ -47,6 +70,10 @@ class SolicitudsController < ApplicationController
 
     def params_solicitud
       params.require(:solicitud).permit(Solicitud.permited_params)
+    end
+
+    def params_analyst_solicitud
+      params.permit(:analyst_id, :solicitud_id)
     end
 
 end

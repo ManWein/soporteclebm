@@ -5,13 +5,12 @@
 
   = form_for(Solicitud.new, as: "solicitud", url: solicituds_path) do |f|
     .field
-      = f.text_field :description, {class: '', required:''}
+      = f.text_area :description, {class: '', required:''}
       = f.label :description, "Descripción", {class: ''}
 
     .field
-      = f.text_field :estado, {class: '', required:''}
+      = f.select :estado,  SolicitudStatus.to_a
       = f.label :estado, "Estado", {class: ''}
 
     .actions
       = f.submit "Create"
-

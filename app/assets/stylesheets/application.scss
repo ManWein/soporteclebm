@@ -10,11 +10,15 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require_self
+ *= require common
+ *= require sidebar
  */
- /*= uire_tree .*= uire_self*/
 
-@import "bootstrap-sprockets";
-@import "bootstrap";
+@import 'materialize/components/color';
+@import 'material_icons';
+@import 'materialize';
+
 
 html {
   position: relative;
@@ -32,3 +36,4 @@ body > .container-with-nav-dashboard {
 body > .container-with-nav-product {
   padding: 78px 0 0 0;
 }
+

@@ -28,6 +28,12 @@ class ReportsController < ApplicationController
   end
 
   def update
+    if @report.update_attributes!(params_report)
+      redirect_to reports_path, notice: 'Reporte updated successfully'
+    else
+      flash[:notice] = "Some of the fields placed errors. Please check information and try again"
+      render :edit
+    end
   end
 
   def destroy
