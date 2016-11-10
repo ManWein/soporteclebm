@@ -1,8 +1,7 @@
-h1 
-  | Keyboards
-  = link_to "(New)", new_keyboard_path
+h2.text_align.center
+  | Teclados
 
-
+= link_to "Agregar", new_keyboard_path
 table.table.table-hover
   thead
     tr
@@ -29,4 +28,4 @@ table.table.table-hover
             = link_to "Edit", edit_keyboard_path(k)
             = link_to "Delete", keyboard_path(k), {data: {confirm: 'Are you sure?'}, method: :delete}
 
-= link_to "Back", componentes_path
+= link_to "Regresar", componentes_path

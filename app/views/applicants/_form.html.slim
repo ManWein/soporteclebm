@@ -1,26 +1,47 @@
 .container
-  h1
-    = "#{action}"
-    = link_to "(Back)", applicants_path
+  h3.text_align.center
+    - if "#{action}" == "ADD"
+      |Agregar Usuario
+    -else
+      |Editar Usuario
 
   = form_for(applicant, url: (action == 'ADD') ? applicants_path : applicant_path(applicant)) do |f|
     .field
-      = f.email_field :email, autofocus: true
       = f.label :email
-
+      = f.email_field :email, autofocus: true
+      
     .field
-      = f.password_field :password, autocomplete: "off"
       = f.label :password
+      = f.password_field :password, autocomplete: "off"
 
     = f.fields_for :applicant_info, Applicant.new.build_applicant_info do |i|
       .field
-        = i.text_field :name, {class: '', required:''}
         = i.label :name, "Name", {class: ''}
+        = i.text_field :name, {class: '', required:''}
 
       .field
-        = i.text_field :username, {class: '', required:''}
         = i.label :username, "Username", {class: ''}
+        = i.text_field :username, {class: '', required:''}
 
+      .field
+        = i.label :cedula, "Cédula", {class: ''}
+        = i.text_field :cedula, {class: '', required:''}
+
+      .field
+        = i.label :tlf, "Teléfono", {class: ''}
+        = i.text_field :tlf, {class: '', required:''}
+
+      .field
+        = i.label :cargo, "Cargo", {class: ''}
+        = i.text_field :cargo, {class: '', required:''}
+
+      .field
+        = i.label :office_id, "Oficina", {class: ''}
+        /= i.text_field :office_id, {class: '', required:''}
+        = i.select :office_id, options_for_select(Office.all.map {|a| [a.nombre, a.id]})
+    
     .actions
       = button_tag
         = (action == 'ADD') ? 'Create' : 'Update'
+
+  = link_to "Regresar", applicants_path

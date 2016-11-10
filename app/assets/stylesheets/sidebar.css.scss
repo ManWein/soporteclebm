@@ -3,3 +3,51 @@ ul.sidebar {
     /*background: #212121;*/
     padding: 0 30px;
 }
+
+.box-menu-landing {
+  background-color: grey;
+
+  .container {
+  ul.nav-tabs {
+  margin: 0;
+  height: 42px;
+
+  li {
+  float: left;
+  height: 100%;
+
+  &.active {
+  background-color: #0c508f; }
+
+  & > a:hover {
+  background-color: #024685; }
+
+  a {
+  position: relative;
+  display: block;
+  padding: 10px 19px 0px 19px;
+  color: white;
+  font-weight: 500;
+  height: 100%; }
+  }
+  }
+  }
+}
+
+
+
+.description-item {
+  line-height: 1.7;
+
+  span {
+  font-weight: bold; }
+
+  p {
+  margin: 0; }
+  }
+
+[type="checkbox"].cpu-check {
+    position: relative !important;
+    opacity: 1 !important;
+    left: 0 !important;
+}

@@ -1,8 +1,7 @@
-h1 
+h2.text_align.center
   | CPUS
-  = link_to "(New)", new_cpu_path
 
-
+= link_to "Agregar", new_cpu_path
 table.table.table-hover
   thead
     tr
@@ -42,9 +41,9 @@ table.table.table-hover
           td = c.en_red
           td = c.software_extra
           td = c.estatus_servicio
-          td = c.tipo
+          td = ComputerType.key_for(c.tipo).to_s.humanize
           td.vanity-actions 
             = link_to "Edit", edit_cpu_path(c)
             = link_to "Delete", cpu_path(c), {data: {confirm: 'Are you sure?'}, method: :delete}
 
-= link_to "Back", componentes_path
+= link_to "Regresar", componentes_path

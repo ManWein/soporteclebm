@@ -1,6 +1,10 @@
-h1 Main dashboard Es el applicant
-h2
+/h1 Main dashboard Es el applicant
+/h2
   | Nombre:
   = current_user.type
 
-= link_to('Solicitudes', solicituds_path, {clas: ''})
+/= link_to('Solicitudes', solicituds_path, {clas: ''})
+
+h3.text_align.center
+  | Bienvenido: 
+  = current_user.name

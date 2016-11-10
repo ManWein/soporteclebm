@@ -1,15 +1,75 @@
 
-h1 = @cpu.marca
-h1 = @cpu.modelo
-h1 = @cpu.serial
-h1 = @cpu.bien_nacional
-h1 = @cpu.tarjeta_madre
-h1 = @cpu.procesador
-h1 = @cpu.memoria_ram
-h1 = @cpu.disco_duro
-h1 = @cpu.cdrom
-h1 = @cpu.sistema_operativo
-h1 = @cpu.en_red
-h1 = @cpu.software_extra
-h1 = @cpu.estatus_servicio
-h1 = @cpu.tipo
+/h5 = @cpu.marca
+/h5 = @cpu.modelo
+/h5 = @cpu.serial
+/h5 = @cpu.bien_nacional
+/h5 = @cpu.tarjeta_madre
+/h5 = @cpu.procesador
+/h5 = @cpu.memoria_ram
+/h5 = @cpu.disco_duro
+/h5 = @cpu.cdrom
+/h5 = @cpu.sistema_operativo
+/h5 = @cpu.en_red
+/h5 = @cpu.software_extra
+/h5 = @cpu.estatus_servicio
+/h5 = @cpu.tipo
+
+
+.container
+  br
+  .row
+    .col.s8
+      h4.center Detalles de CPU
+
+  br
+  .row
+    .col.s12.m6.l6
+      .description-item
+        span Marca: 
+        = @cpu.marca
+      .description-item
+        span Modelo: 
+        = @cpu.modelo
+      .description-item
+        span Serial: 
+        = @cpu.serial
+      .description-item
+        span Bien Nacional: 
+        = @cpu.bien_nacional
+      .description-item
+        span Tipo: 
+        = @cpu.tipo
+    
+    .col.s12.m6.l6
+      .description-item
+        span Tarjeta Madre: 
+        = @cpu.tarjeta_madre
+      .description-item
+        span Procesador: 
+        = @cpu.procesador
+      .description-item
+        span Memoria Ram: 
+        = @cpu.memoria_ram
+      .description-item
+        span Disco Duro: 
+        = @cpu.disco_duro
+      .description-item
+        span Estatus de Servicio: 
+        = @cpu.estatus_servicio
+
+  br
+  .row
+    .col.s12.m12.l12
+      .description-item
+        span Cd/Dvd-Rom: 
+        = @cpu.cdrom
+      .description-item
+        span Sistema Operativo: 
+        = @cpu.sistema_operativo
+      .description-item
+        span ¿En red?: 
+        = @cpu.en_red
+      .description-item
+        span Software Extra: 
+        = @cpu.software_extra
+    

@@ -1,67 +1,73 @@
 .container
-  h1
-    = "#{action}"
-    = link_to "(Back)", cpus_path
+  h2.text_align.center
+    - if "#{action}" == "ADD"
+      |Agregar CPU
+    -else
+      |Editar CPU
+
 
   /= form_for(Computer.new, as: "computer", url: cpus_path) do |f|
   = form_for(cpu, url: (action == 'ADD') ? cpus_path : cpu_path(cpu)) do |f|
 
     .field
-      = f.text_field :marca, {class: '', required:''}
       = f.label :marca, "Marca", {class: ''}
+      = f.text_field :marca, {class: '', required:''}
 
     .field
-      = f.text_field :modelo, {class: '', required:''}
       = f.label :modelo, "Modelo", {class: ''}
+      = f.text_field :modelo, {class: '', required:''}
 
     .field
-      = f.text_field :serial, {class: '', required:''}
       = f.label :serial, "Serial", {class: ''}
+      = f.text_field :serial, {class: '', required:''}
 
     .field
-      = f.text_field :bien_nacional, {class: '', required:''}
       = f.label :bien_nacional, "Bien Nacional", {class: ''}
+      = f.text_field :bien_nacional, {class: '', required:''}
 
     .field
-      = f.text_field :tarjeta_madre, {class: '', required:''}
       = f.label :tarjeta_madre, "Tarjeta Madre", {class: ''}
+      = f.text_field :tarjeta_madre, {class: '', required:''}
 
     .field
-      = f.text_field :procesador, {class: '', required:''}
       = f.label :procesador, "Procesador", {class: ''}
+      = f.text_field :procesador, {class: '', required:''}
 
     .field
-      = f.text_field :memoria_ram, {class: '', required:''}
       = f.label :memoria_ram, "Memoria Ram", {class: ''}
+      = f.text_field :memoria_ram, {class: '', required:''}
 
     .field
-      = f.text_field :disco_duro, {class: '', required:''}
       = f.label :disco_duro, "Disco Duro", {class: ''}
+      = f.text_field :disco_duro, {class: '', required:''}
 
     .field
-      = f.check_box :cdrom, {class: ''}
       = f.label :cdrom, "CD-Rom", {class: ''}
+      /= f.check_box :cdrom, {class: ''}
+      = f.check_box(:cdrom, {class: 'cpu-check'}, true, false) 
 
     .field
-      = f.text_field :sistema_operativo, {class: '', required:''}
       = f.label :sistema_operativo, "Sistema Operativo", {class: ''}
+      = f.text_field :sistema_operativo, {class: '', required:''}
 
     .field
-      = f.check_box :en_red, {class: ''}
       = f.label :en_red, "En Red", {class: ''}
+      = f.check_box(:en_red, {class: 'cpu-check'}, true, false)
 
     .field
-      = f.text_area :software_extra, {class: ''}
       = f.label :software_extra, "Software Extra", {class: ''}
+      = f.text_area :software_extra, {class: ''}
 
     .field
-      = f.select :estatus_servicio, ServiceStatus.to_a
       = f.label :estatus_servicio, "Estatus de Servicio", {class: ''}
+      = f.select :estatus_servicio, ServiceStatus.to_a
 
     .field
-      = f.select :tipo, ComputerType.to_a
       = f.label :tipo, "Tipo", {class: ''}
+      = f.select :tipo, ComputerType.to_a
 
     .actions
       = button_tag
         = (action == 'ADD') ? 'Create' : 'Update'
+
+  = link_to "Regresar", cpus_path

@@ -3,6 +3,6 @@ class ApplicantInfo < ActiveRecord::Base
 
   accepts_nested_attributes_for :applicant, allow_destroy: true
 
-  validates :name, :username, presence: true
+  validates :name, :username, :cedula, :tlf, :cargo, :office_id, presence: true
 
 end
