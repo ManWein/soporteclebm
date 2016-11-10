@@ -12,7 +12,7 @@ class Solicitud < ActiveRecord::Base
   validates :description, :estado, presence: true
 
   def self.permited_params
-    [:description, :estado]
+    [:description, :estado, :applicant_id]
   end
 
   def set_report

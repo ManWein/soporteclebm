@@ -1,6 +1,7 @@
-h1
-  | Analysts
-  = link_to "(New)", new_analyst_path
+h3.text_align.center
+  | Analistas
+
+= link_to "Agregar", new_analyst_path
 
 table.table.table-hover
   thead
@@ -8,11 +9,12 @@ table.table.table-hover
       th# Email
       th# Name
       th# Username
-      th#
+      th# Cédula
+      th# Teléfono
   tbody
     - if @analysts.blank?
       tr
-        - (0..3).each do |a|
+        - (0..4).each do |a|
           td -
     - else
       - @analysts.each do |a|
@@ -20,8 +22,10 @@ table.table.table-hover
           td = a.email
           td = a.name
           td = a.username
+          td = a.cedula
+          td = a.tlf
           td.vanity-actions
             = link_to "Edit", edit_analyst_path(a)
             = link_to "Delete", analyst_path(a), {data: {confirm: 'Are you sure?'}, method: :delete}
 
-= link_to "Back", dashboard_manager_path(current_user)
+= link_to "Regresar", dashboard_manager_path(current_user)

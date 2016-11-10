@@ -9,7 +9,7 @@ class Manager < User
   end
 
   def self.permited_params
-    [:type, :email, :password, :password_confirmation, manager_info_attributes: ([:name, :username])]
+    [:type, :email, :password, :password_confirmation, manager_info_attributes: ([:name, :username, :cedula, :tlf])]
   end
 
   def name

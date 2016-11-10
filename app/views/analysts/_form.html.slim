@@ -1,26 +1,39 @@
 .container
-  h1
-    = "#{action}"
-    = link_to "(Back)", analysts_path
+  h3.text_align.center
+    - if "#{action}" == "ADD"
+      |Agregar Analista
+    -else
+      |Editar Analista
 
   = form_for(analyst, url: (action == 'ADD') ? analysts_path : analyst_path(analyst)) do |f|
     .field
-      = f.email_field :email, autofocus: true
       = f.label :email
+      = f.email_field :email, autofocus: true
 
     .field
-      = f.password_field :password, autocomplete: "off"
       = f.label :password
+      = f.password_field :password, autocomplete: "off"
 
     = f.fields_for :analyst_info, Analyst.new.build_analyst_info do |i|
       .field
-        = i.text_field :name, {class: '', required:''}
         = i.label :name, "Name", {class: ''}
+        = i.text_field :name, {class: '', required:''}
 
       .field
-        = i.text_field :username, {class: '', required:''}
         = i.label :username, "Username", {class: ''}
+        = i.text_field :username, {class: '', required:''}
+
+      .field
+        = i.label :cedula, "Cédula", {class: ''}
+        = i.text_field :cedula, {class: '', required:''}
+
+      .field
+        = i.label :tlf, "Teléfono", {class: ''}
+        = i.text_field :tlf, {class: '', required:''}
+
 
     .actions
       = button_tag
         = (action == 'ADD') ? 'Create' : 'Update'
+
+  = link_to "Regresar", analysts_path

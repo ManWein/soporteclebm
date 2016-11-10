@@ -1,7 +1,7 @@
-h1 
-  | Mice
-  = link_to "(New)", new_mouse_path
+h2.text_align.center
+  | Ratones
 
+= link_to "Agregar", new_mouse_path
 
 table.table.table-hover
   thead
@@ -32,4 +32,4 @@ table.table.table-hover
             = link_to "Edit", edit_mouse_path(m)
             = link_to "Delete", mouse_path(m), {data: {confirm: 'Are you sure?'}, method: :delete}
 
-= link_to "Back", componentes_path
+= link_to "Regresar", componentes_path

@@ -1,6 +1,7 @@
-h1 
+h3.text_align.center
   | Equipos Asignados
-  = link_to "(New)", cpu_user_new_path
+  
+= link_to "Asignar", cpu_user_new_path
 
 
 table.table.table-hover
@@ -31,4 +32,7 @@ table.table.table-hover
             - unless c.applicants.blank?
               = link_to "Delete", "/cpu_user_delete/#{c.id}/#{c.applicants.first.id}", {data: {confirm: 'Are you sure?'}, method: :delete}
 
-= link_to "Back", dashboard_manager_path(current_user)
+- if current_user.manager?
+  = link_to "Regresar", dashboard_manager_path(current_user)
+- else 
+  = link_to "Regresar", dashboard_analyst_path(current_user)

@@ -1,31 +1,36 @@
 .container
-  h1
-    = "#{action}"
-    = link_to "(Back)", mice_path
+  h2.text_align.center
+    - if "#{action}" == "ADD"
+      |Agregar Raton
+    -else
+      |Editar Raton
+  
 
   /= form_for(Mouse.new, as: "mouse", url: mice_path) do |f|
   = form_for(mouse, url: (action == 'ADD') ? mice_path : mouse_path(mouse)) do |f|
 
     .field
-      = f.select :computer_id, Computer.all.collect { |s| [ "#{s.serial} - #{s.marca} " , s.id ] }, include_blank: true
       = f.label :computer_id, "CPU", {class: ''}
+      = f.select :computer_id, Computer.all.collect { |s| [ "#{s.serial} - #{s.marca} " , s.id ] }, include_blank: true
 
     .field
-      = f.text_field :marca, {class: '', required:''}
       = f.label :marca, "Marca", {class: ''}
+      = f.text_field :marca, {class: '', required:''}
 
     .field
-      = f.text_field :modelo, {class: '', required:''}
       = f.label :modelo, "Modelo", {class: ''}
+      = f.text_field :modelo, {class: '', required:''}
 
     .field
-      = f.text_field :serial, {class: '', required:''}
       = f.label :serial, "Serial", {class: ''}
+      = f.text_field :serial, {class: '', required:''}
 
     .field
-      = f.text_field :bien_nacional, {class: '', required:''}
       = f.label :bien_nacional, "Bien nacional", {class: ''}
+      = f.text_field :bien_nacional, {class: '', required:''}
 
     .actions
      = button_tag
         = (action == 'ADD') ? 'Create' : 'Update'
+
+  = link_to "Regresar", mice_path

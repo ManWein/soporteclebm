@@ -1,8 +1,7 @@
-h1 
-  | Regulators
-  = link_to "(New)", new_regulator_path
+h2.text_align.center
+  | Reguladores
 
-
+= link_to "Agregar", new_regulator_path
 table.table.table-hover
   thead
     tr
@@ -29,4 +28,4 @@ table.table.table-hover
             = link_to "Edit", edit_regulator_path(r)
             = link_to "Delete", regulator_path(r), {data: {confirm: 'Are you sure?'}, method: :delete}
 
-= link_to "Back", componentes_path
+= link_to "Regresar", componentes_path

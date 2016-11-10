@@ -1,11 +1,13 @@
 ActiveAdmin.register Analyst do
   menu parent: "Users"
-  permit_params :email, :password, :password_confirmation, :type, :active, :analyst_info_attributes => [:id, :name, :username]
+  permit_params :email, :password, :password_confirmation, :type, :active, :analyst_info_attributes => [:id, :name, :username, :cedula, :tlf]
 
   index do
     selectable_column
     id_column
     column :email
+    #column :cedula
+    #column :tlf
     column :current_sign_in_at
     column :sign_in_count
     column :created_at
@@ -29,6 +31,8 @@ ActiveAdmin.register Analyst do
         t.input :id, as: :hidden
         t.input :name
         t.input :username
+        t.input :cedula
+        t.input :tlf
       end
     end
     f.actions

@@ -3,6 +3,11 @@ class ApplicantsController < ApplicationController
   before_filter :find_applicant, only: [:show, :edit, :update, :destroy]
   before_filter :all_applicants, only: [:index]
 
+  def dashboard
+  end
+
+
+
   def index
   end
 

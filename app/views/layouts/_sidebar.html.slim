@@ -1,25 +1,54 @@
 ul#sidebar.right.sidebar.fixed.side-nav
   
-  li class="#{cp('/solicituds')}"
-    = link_to 'SOLICITUDES', solicituds_path(current_user.blank? ? 0 : current_user)
-  
-  li class=""
-    = link_to 'ASIGNAR SOLICITUDES', analyst_solicitud_path(current_user.blank? ? 0 : current_user)
-  
-  li class=""
-    = link_to 'USUARIOS', applicants_path(current_user.blank? ? 0 : current_user)
-  
-  li class=""
-    = link_to 'ANALISTAS', analysts_path(current_user.blank? ? 0 : current_user)
-  
-  li class=""
-    = link_to 'ASIGNACION EQUIPOS', cpu_user_path(current_user.blank? ? 0 : current_user)
+  - if current_user.applicant?
+    li class="#{cp('/solicituds')}"
+      = link_to 'SOLICITUDES', applicant_solicituds_path(current_user.blank? ? 0 : current_user)
 
-  li class=""
-    = link_to 'COMPONENTES', componentes_path(current_user.blank? ? 0 : current_user)
 
-  li class=""
-    = link_to 'IMPRESORAS', printers_path(current_user.blank? ? 0 : current_user)
 
-  li class=""
-    = link_to 'REPORTES', reports_path(current_user.blank? ? 0 : current_user)
+  - if current_user.manager?
+    li class="#{cp('/solicituds')}"
+      = link_to 'SOLICITUDES', solicituds_path(current_user.blank? ? 0 : current_user)
+    
+    li class=""
+      = link_to 'ASIGNAR SOLICITUDES', analysts_solicitud_path(current_user.blank? ? 0 : current_user)
+    
+    li class=""
+      = link_to 'USUARIOS', applicants_path(current_user.blank? ? 0 : current_user)
+    
+    li class=""
+      = link_to 'ANALISTAS', analysts_path(current_user.blank? ? 0 : current_user)
+    
+    li class=""
+      = link_to 'ASIGNACION EQUIPOS', cpu_user_path(current_user.blank? ? 0 : current_user)
+
+    li class=""
+      = link_to 'COMPONENTES', componentes_path(current_user.blank? ? 0 : current_user)
+
+    li class=""
+      = link_to 'IMPRESORAS', printers_path(current_user.blank? ? 0 : current_user)
+
+    li class=""
+      = link_to 'REPORTES', reports_path(current_user.blank? ? 0 : current_user)
+
+
+  - if current_user.analyst?
+    li class="#{cp('/solicituds')}"
+      = link_to 'SOLICITUDES',analyst_solicituds_path(current_user.blank? ? 0 : current_user)
+    
+    li class=""
+      = link_to 'USUARIOS', applicants_path(current_user.blank? ? 0 : current_user)
+    
+    li class=""
+      = link_to 'ASIGNACION EQUIPOS', cpu_user_path(current_user.blank? ? 0 : current_user)
+
+    li class=""
+      = link_to 'COMPONENTES', componentes_path(current_user.blank? ? 0 : current_user)
+
+    li class=""
+      = link_to 'IMPRESORAS', printers_path(current_user.blank? ? 0 : current_user)
+
+    li class=""
+      = link_to 'REPORTES', reports_path(current_user.blank? ? 0 : current_user)
+
+      

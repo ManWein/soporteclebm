@@ -3,7 +3,7 @@ html
   head
     title Soprteclebm
     meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"
-    = favicon_link_tag 'favicon.png', rel: 'Shortcut Icon', type: 'image/png'
+    = favicon_link_tag 'escudo.png', rel: 'Shortcut Icon', type: 'image/png'
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
@@ -30,14 +30,16 @@ html
 
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav.navbar-right
+            img src="clebm.png"
             li
+              img src="clebm.png"
               a.color-text-dark.box-car
                 /= image_tag("white-cart.png", {class: "icon-form-control"})
                 /span.badge-car = @shopping_cart_count ? @shopping_cart_count : 0
 
             - if current_user
               li.divider-vertical
-                = link_to('Elimi', destroy_user_session_path, :method => :delete, :class => "color-text-dark.box-exit")
+                = link_to('Eliminar', destroy_user_session_path, :method => :delete, :class => "color-text-dark.box-exit")
 
     .container-with-nav-dashboard
       = yield

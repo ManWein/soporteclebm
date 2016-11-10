@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161021235050) do
+ActiveRecord::Schema.define(version: 20161110000110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(version: 20161021235050) do
     t.string   "username"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "cedula"
+    t.string   "tlf"
   end
 
   create_table "analyst_solicituds", force: :cascade do |t|
@@ -85,6 +87,8 @@ ActiveRecord::Schema.define(version: 20161021235050) do
     t.datetime "updated_at"
     t.string   "cedula"
     t.string   "tlf"
+    t.string   "cargo"
+    t.integer  "office_id"
   end
 
   create_table "computers", force: :cascade do |t|
@@ -124,6 +128,8 @@ ActiveRecord::Schema.define(version: 20161021235050) do
     t.string   "username"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "cedula"
+    t.string   "tlf"
   end
 
   create_table "mice", force: :cascade do |t|
