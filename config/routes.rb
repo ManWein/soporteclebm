@@ -22,8 +22,20 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :analysts
-  resources :applicants
+  resources :analysts do
+    member do
+      get :dashboard
+    end
+    resources :solicituds
+  end
+
+  resources :applicants do
+    member do
+      get :dashboard
+    end
+    resources :solicituds
+  end
+
   resources :solicituds
   resources :mice
   resources :regulators
@@ -48,13 +60,13 @@ Rails.application.routes.draw do
 
   delete '/cpu_user_delete/:cpu_id/:user_id', to: 'cpus#cpu_user_delete'
 
-  get '/analyst_solicitud', to: 'solicituds#analyst_solicitud'
+  get '/analysts_solicitud', to: 'solicituds#analysts_solicitud'
 
-  get :analyst_solicitud_new, to: 'solicituds#analyst_solicitud_new'
+  get :analysts_solicitud_new, to: 'solicituds#analysts_solicitud_new'
 
-  post :analyst_solicitud_new, to: 'solicituds#analyst_solicitud_create'
+  post :analysts_solicitud_new, to: 'solicituds#analysts_solicitud_create'
 
-  delete '/analyst_solicitud_delete/:analyst_id/:solicitud_id', to: 'solicituds#analyst_solicitud_delete'
+  delete '/analysts_solicitud_delete/:analyst_id/:solicitud_id', to: 'solicituds#analysts_solicitud_delete'
 
 
 

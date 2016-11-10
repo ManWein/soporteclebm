@@ -1,8 +1,8 @@
-h1 
-  | Printers
-  = link_to "(New)", new_printer_path
+h2.text_align.center
+  | Impresoras
 
 
+= link_to "Agregar", new_printer_path
 table.table.table-hover
   thead
     tr
@@ -27,4 +27,7 @@ table.table.table-hover
             = link_to "Edit", edit_printer_path(p)
             = link_to "Delete", printer_path(p), {data: {confirm: 'Are you sure?'}, method: :delete}
 
-= link_to "Back", dashboard_manager_path(current_user)
+- if current_user.manager?
+  = link_to "Regresar", dashboard_manager_path(current_user)
+- else 
+  = link_to "Regresar", dashboard_analyst_path(current_user)

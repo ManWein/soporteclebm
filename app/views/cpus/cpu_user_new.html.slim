@@ -1,19 +1,25 @@
 .container
-  h1
-    = link_to "(Back)", cpu_user_path
+  h3.text_align.center
+    |Asignación de Equipos
+
+  
 
   = form_for cpu_user_new_path do
 
     .field
+      = label_tag :applicant_id, "Usuario", {style: 'position: relative;'}
       = select_tag :applicant_id, options_for_select(Applicant.where.not(id: ApplicantComputer.all.map {|a| a.applicant_id}).map {|a| [a.name, a.id]})
-      = label_tag :applicant, "Usuario", {class: ''}
+
+
     .field
+      = label_tag :computer_id, "Equipo", {style: 'position: relative;'}
       = select_tag :computer_id, options_for_select(Computer.where.not(id: ApplicantComputer.all.map {|a| a.computer_id}).map {|a| [a.bien_nacional, a.id]})
-      = label_tag :computer_id, "Equipo", {class: ''}
 
     .actions
       = button_tag type: 'submit' do
         = 'create'
+
+  = link_to "Regresar", cpu_user_path
 / Consulta para filtrar listas.
 /Applicant.where.not(id: ApplicantComputer.all.map {|a| a.applicant_id})
 /Computer.where.not(id: ApplicantComputer.all.map {|a| a.computer_id})

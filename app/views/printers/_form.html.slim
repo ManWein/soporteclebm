@@ -1,26 +1,30 @@
 .container
-  h1
-    = "#{action}"
-    = link_to "(Back)", printers_path
+  h2.text_align.center
+    - if "#{action}" == "ADD"
+      |Agregar Impresora
+    -else
+      |Editar Impresora
 
   = form_for(printer, url: (action == 'ADD') ? printers_path : printer_path(printer)) do |f|
     .field
-      = f.text_field :marca, {class: '', required:''}
       = f.label :marca, "Marca", {class: ''}
+      = f.text_field :marca, {class: '', required:''}
 
     .field
-      = f.text_field :modelo, {class: '', required:''}
       = f.label :modelo, "Modelo", {class: ''}
+      = f.text_field :modelo, {class: '', required:''}
 
     .field
-      = f.text_field :serial, {class: '', required:''}
       = f.label :serial, "Serial", {class: ''}
+      = f.text_field :serial, {class: '', required:''}
 
     .field
-      = f.text_field :bien_nacional, {class: '', required:''}
       = f.label :bien_nacional, "Bien nacional", {class: ''}
+      = f.text_field :bien_nacional, {class: '', required:''}
 
     .actions
       = button_tag
         = (action == 'ADD') ? 'Create' : 'Update'
+
+  = link_to "Regresar", printers_path
 

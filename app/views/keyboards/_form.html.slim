@@ -1,29 +1,34 @@
 .container
-  h1
-    = "#{action}"
-    = link_to "(Back)", keyboards_path
+  h2.text_align.center
+    - if "#{action}" == "ADD"
+      |Agregar Teclado
+    -else
+      |Editar Teclado
+
 
   = form_for(keyboard, url: (action == 'ADD') ? keyboards_path : keyboard_path(keyboard)) do |f|
     .field
-      = f.select :computer_id, Computer.all.collect { |s| [ "#{s.serial} - #{s.marca} " , s.id ] }, include_blank: true
       = f.label :computer_id, "CPU", {class: ''}
+      = f.select :computer_id, Computer.all.collect { |s| [ "#{s.serial} - #{s.marca} " , s.id ] }, include_blank: true
   
     .field
-      = f.text_field :marca, {class: '', required:''}
       = f.label :marca, "Marca", {class: ''}
+      = f.text_field :marca, {class: '', required:''}
 
     .field
-      = f.text_field :modelo, {class: '', required:''}
       = f.label :modelo, "Modelo", {class: ''}
+      = f.text_field :modelo, {class: '', required:''}
 
     .field
-      = f.text_field :serial, {class: '', required:''}
       = f.label :serial, "Serial", {class: ''}
+      = f.text_field :serial, {class: '', required:''}
 
     .field
-      = f.text_field :bien_nacional, {class: '', required:''}
       = f.label :bien_nacional, "Bien nacional", {class: ''}
+      = f.text_field :bien_nacional, {class: '', required:''}
 
     .actions
       = button_tag
         = (action == 'ADD') ? 'Create' : 'Update'
+
+  = link_to "Regresar", keyboards_path

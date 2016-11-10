@@ -1,16 +1,24 @@
 .container
-  h1
-    | New
-    = link_to "(Back)", solicituds_path
+  h3.text_align.center
+    | Nueva Solicitud
+
 
   = form_for(Solicitud.new, as: "solicitud", url: solicituds_path) do |f|
-    .field
-      = f.text_area :description, {class: '', required:''}
-      = f.label :description, "Descripción", {class: ''}
+    - if current_user.applicant?
+      /= f.hidden_field  :solicitud, :applicant_id, current_user.id
+      input type="hidden" id="solicitud_applicant_id" name="solicitud[applicant_id]" value="#{current_user.id}"
+
 
     .field
+      = f.label :description, "Descripción", {class: ''}
+      = f.text_area :description, {class: '', required:''}
+
+    
+    .field class="#{'hide' if current_user.applicant?}"
       = f.select :estado,  SolicitudStatus.to_a
       = f.label :estado, "Estado", {class: ''}
 
     .actions
       = f.submit "Create"
+
+  = link_to "Regresar", analyst_solicituds_path(current_user.blank? ? 0 : current_user)

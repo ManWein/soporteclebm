@@ -1,15 +1,22 @@
 .navbar-fixed
-  nav
-    = link_to "Soporte CLEBM", root_path, {class: 'brand-logo'}
+  
+  nav.black
 
-    a.button-collapse href='#' data-activates='sidebar'
+    img src="../../assets/escudo.png"
+
+    = link_to "Soporte CLEBM", root_path, {class: 'brand-logo'}
+    
+    a.button-collapse href='#' data-activates='sidebar' 
       i.material-icons menu
 
+    
     - unless current_user.blank?
       = link_to destroy_user_session_path, {method: 'delete', class: 'logout hide-on-med-and-down right'} do
         | Salir
+
 
       = link_to "#", {class: 'my-account hide-on-med-and-down'} do
         = current_user.name
 
       = render partial: 'layouts/sidebar'
+

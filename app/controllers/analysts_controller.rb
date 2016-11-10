@@ -3,6 +3,10 @@ class AnalystsController < ApplicationController
   before_filter :find_analyst, only: [:show, :edit, :update, :destroy]
   before_filter :all_analysts, only: [:index]
 
+  def dashboard
+  end
+
+
   def index
   end
 

@@ -1,10 +1,11 @@
-h1
+h3.text_align.center
   | Solicitudes
-  = link_to "(New)", new_solicitud_path
+= link_to "Agregar", new_solicitud_path
 
 table.table.table-hover
   thead
     tr
+      th# id
       th# Descripción
       th# Estado
       th# Analista
@@ -13,19 +14,24 @@ table.table.table-hover
   tbody
     - if @solicituds.blank?
       tr
-        - (0..4).each do |v|
+        - (0..5).each do |v|
           td -
     - else
       - @solicituds.each do |s|
         tr
+          td =s.id
           td = truncate(s.description, length: 17)
-          td = s.estado
+          td = SolicitudStatus.key_for(s.estado).to_s.humanize
           td = s.analysts.blank? ? 'N/A' : s.analysts.first.name
           td = s.created_at
           td.vanity-actions
-            - unless s.report.blank?
-              = link_to "Reportes", report_path(s.set_report)
-            /= link_to "Edit", edit_solicitud_path(s)
-            = link_to "Delete", solicitud_path(s), {data: {confirm: 'Are you sure?'}, method: :delete}
+            - if current_user.manager?
+              - unless s.report.blank?
+                = link_to "Reportes", report_path(s.set_report)
+              /= link_to "Edit", edit_solicitud_path(s)
+              = link_to "Delete", solicitud_path(s), {data: {confirm: 'Are you sure?'}, method: :delete}
 
-= link_to "Back", dashboard_manager_path(current_user)
+- if current_user.manager?
+  = link_to "Regresar", dashboard_manager_path(current_user)
+- else 
+  = link_to "Regresar", dashboard_analyst_path(current_user)
