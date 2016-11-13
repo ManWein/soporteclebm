@@ -15,8 +15,8 @@
 
     
     .field class="#{'hide' if current_user.applicant?}"
-      = f.select :estado,  SolicitudStatus.to_a
       = f.label :estado, "Estado", {class: ''}
+      = f.select :estado,  SolicitudStatus.to_a
 
     .actions
       = f.submit "Create"

@@ -7,8 +7,8 @@ table.table.table-hover
     tr
       th# Email
       th# Name
-      th# Username
-      th# Cédula
+      /th# Username
+      /th# Cédula
       th# Teléfono
       th# Cargo
       th# Oficina
@@ -23,11 +23,11 @@ table.table.table-hover
         tr
           td = a.email
           td = a.name
-          td = a.username
-          td = a.cedula
+          /td = a.username
+          /td = a.cedula
           td = a.tlf
           td = a.cargo
-          td = a.applicant_info.office_id
+          td = a.oficina_nombre
           td.vanity-actions
             = link_to "Edit", edit_applicant_path(a)
             = link_to "Delete", applicant_path(a), {data: {confirm: 'Are you sure?'}, method: :delete}
