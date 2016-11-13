@@ -1,6 +1,6 @@
 h3.text_align.center 
   | Solicitudes Asignadas
-= link_to "Asignar Nueva", analysts_solicitud_new_path
+= link_to "Asignar", analysts_solicitud_new_path
 
 
 table.table.table-hover
@@ -23,7 +23,8 @@ table.table.table-hover
           td = s.analysts.blank? ? "Solicitud no asignada" : s.analysts.first.id
           td = s.applicant_id.blank? ? "N/A" : s.applicant_id
           td = s.description
-          td = s.estado
+          /td = s.estado
+          td = SolicitudStatus.key_for(s.estado).to_s.humanize
           td = s.created_at
           /td = ComputerType.key_for(c.tipo).to_s.humanize
           td.vanity-actions 

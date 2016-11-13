@@ -1,10 +1,9 @@
 class Applicant < User
-  has_one :applicant_info
-  accepts_nested_attributes_for :applicant_info
-  
   has_many :applicant_computers
   has_many :computers, through: :applicant_computers
 
+  has_one :applicant_info
+  accepts_nested_attributes_for :applicant_info
 
   validates_presence_of :applicant_info
     
@@ -36,8 +35,8 @@ class Applicant < User
     self.applicant_info.blank? ? "N/A" : self.applicant_info.cargo
   end
 
-  def oficina
-    self.applicant_info.blank? ? "N/A" : self.applicant_info.office_id
+  def oficina_nombre
+    self.applicant_info.blank? ? "N/A" : self.applicant_info.oficina_nombre
   end
 
 end

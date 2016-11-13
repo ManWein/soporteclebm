@@ -19,7 +19,8 @@ table.table.table-hover
     - else
       - @solicituds.each do |s|
         tr
-          td =s.id
+          /td =link_to "#{s.id}", solicitud_path
+          td = s.id
           td = truncate(s.description, length: 17)
           td = SolicitudStatus.key_for(s.estado).to_s.humanize
           td = s.analysts.blank? ? 'N/A' : s.analysts.first.name

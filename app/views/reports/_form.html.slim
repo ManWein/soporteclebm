@@ -10,14 +10,17 @@
     .field
       = f.label :solicitud_id, "Solicitud", {class: ''}
       - if current_user.manager?
-        = f.select :solicitud_id, Solicitud.all.collect { |s| [ "#{s.id}-#{s.description}", s.id ] }, include_blank: true
+        = f.select :solicitud_id, Solicitud.all.collect { |s| [ "#{s.id}-#{s.description}", s.id ] }, {},  {class: '', required:''}
       - elsif current_user.analyst?
-        = f.select :solicitud_id, current_user.solicituds.all.collect { |s| [ "#{s.id}-#{s.description}", s.id ] }, include_blank: true
-         
+        = f.select :solicitud_id, current_user.solicituds.all.collect { |s| [ "#{s.id}-#{s.description}", s.id ] }, {}, {class: '', required:''}
 
     .field
       = f.label :tipo_servicio, "Tipo de Sevicio", {class: ''}
-      = f.select :tipo_servicio,  ServiceType.to_a
+      = f.select :tipo_servicio,  ServiceType.to_a, {class: '', required:''}
+
+    .field
+      = label_tag :estado_solicitud, "Estatus de solicitud", {class: ''}
+      = select_tag :estado_solicitud, options_for_select(SolicitudStatus.to_a), {class: '', required:''}
 
     .field
       = f.label :detalle_servicio, "Detalle de Servicio", {class: ''}
@@ -32,3 +35,8 @@
         = (action == 'ADD') ? 'Create' : 'Update'
   
   = link_to "Regresar", reports_path
+
+javascript:
+  $(document).ready(function() {
+    $('select').material_select();
+  });

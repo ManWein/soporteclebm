@@ -14,7 +14,9 @@
       = f.label :password
       = f.password_field :password, autocomplete: "off"
 
-    = f.fields_for :applicant_info, Applicant.new.build_applicant_info do |i|
+    /= f.fields_for :applicant_info, Applicant.new.build_applicant_info do |i|
+    = f.fields_for :applicant_info, (f.object.applicant_info || Applicant.new.build_applicant_info) do |i|
+
       .field
         = i.label :name, "Name", {class: ''}
         = i.text_field :name, {class: '', required:''}
