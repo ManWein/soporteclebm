@@ -6,10 +6,10 @@ h2.text_align.center
 table.table.table-hover
   thead
     tr
-      th# solicitud_id
-      th# tipo_servicio
-      th# detalle_servicio
-      th# estatus
+      th# Id
+      th# Tipo de Servicio
+      th# Detalle de Servicio
+      th# Estatus
       th#
   tbody
     - if @reports.blank?
@@ -20,7 +20,7 @@ table.table.table-hover
       - @reports.each do |r|
         tr
           td = r.solicitud_id
-          td = r.tipo_servicio
+          td = ServiceType.key_for(r.tipo_servicio).to_s.humanize
           td = r.detalle_servicio
           td = r.estatus
           td.vanity-actions 

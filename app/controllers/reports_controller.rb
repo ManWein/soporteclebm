@@ -2,6 +2,7 @@ class ReportsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :find_report, only: [:show, :edit, :update, :destroy]
   before_filter :all_reports, only: [:index]
+  before_filter :find_solicitud, only: [:create, :update]
 
   #index #create #new #edit #show #update #update #destroy 
 
@@ -10,12 +11,17 @@ class ReportsController < ApplicationController
   end
 
   def create
+    puts ' -'*30
+    puts params[:estado_solicitud]
+    puts ' -'*30
     @report = Report.new(params_report)
     if @report.save!
+      @solicitud.update(estado: params[:estado_solicitud]) unless @solicitud.blank?
       redirect_to reports_path, notice: 'Report created successfully'
     else
       render :new
     end
+
   end
 
   def new
@@ -29,6 +35,7 @@ class ReportsController < ApplicationController
 
   def update
     if @report.update_attributes!(params_report)
+      @solicitud.update(estado: params[:estado_solicitud]) unless @solicitud.blank?
       redirect_to reports_path, notice: 'Reporte updated successfully'
     else
       flash[:notice] = "Some of the fields placed errors. Please check information and try again"
@@ -53,6 +60,10 @@ class ReportsController < ApplicationController
 
     def params_report
       params.require(:report).permit(Report.permited_params)
+    end
+
+    def find_solicitud
+      @solicitud = Solicitud.find_by_id(params[:report][:solicitud_id])
     end
 
 end
