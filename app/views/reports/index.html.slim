@@ -6,15 +6,15 @@ h2.text_align.center
 table.table.table-hover
   thead
     tr
-      th# Id
+      th# Id de Solicitud
       th# Tipo de Servicio
       th# Detalle de Servicio
-      th# Estatus
+      /th# Estatus
       th#
   tbody
     - if @reports.blank?
       tr
-        - (0..4).each do |r|
+        - (0..3).each do |r|
           td -
     - else
       - @reports.each do |r|
@@ -22,7 +22,7 @@ table.table.table-hover
           td = r.solicitud_id
           td = ServiceType.key_for(r.tipo_servicio).to_s.humanize
           td = r.detalle_servicio
-          td = r.estatus
+          /td = r.estatus
           td.vanity-actions 
             = link_to "Edit", edit_report_path(r)
             = link_to "Delete", report_path(r), {data: {confirm: 'Are you sure?'}, method: :delete}
