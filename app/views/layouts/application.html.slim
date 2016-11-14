@@ -1,19 +1,21 @@
 doctype html
 html
   head
-    title Soprteclebm
+    title SoporteCLEBM
     meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"
     = favicon_link_tag 'escudo.png', rel: 'Shortcut Icon', type: 'image/png'
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag   'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
 
-  body
+  body.bg-custom
+
     = render partial: 'layouts/header'
     main
       .row
         .col.s12.dashboard-content
           = yield
+
   
   javascript:
     $(document).ready(function() {
@@ -41,5 +43,8 @@ html
               li.divider-vertical
                 = link_to('Eliminar', destroy_user_session_path, :method => :delete, :class => "color-text-dark.box-exit")
 
+
     .container-with-nav-dashboard
       = yield
+
+    
