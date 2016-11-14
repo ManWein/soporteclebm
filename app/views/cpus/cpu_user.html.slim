@@ -21,7 +21,7 @@ table.table.table-hover
     - else
       - @cpus.each do |c|
         tr
-          td = c.applicants.blank? ? "Sin asignar" : c.applicants.first.id
+          td = c.applicants.blank? ? "Sin asignar" : c.applicants.first.name
           td = c.marca
           td = c.modelo
           td = c.serial

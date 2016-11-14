@@ -1,7 +1,9 @@
-h3.text_align.center
-  | Bienvenido Supervisor: 
-  = current_user.name
+br
+br
 
+h4.text_align.center
+  | Bienvenido, 
+  = current_user.name
 /
       = link_to('Solicitudes', solicituds_path, {clas: ''})
       = ' | '

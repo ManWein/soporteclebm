@@ -1,5 +1,29 @@
 
-h1 = @report.solicitud_id
-h1 = @report.tipo_servicio
-h1 = @report.detalle_servicio
-h1 = @report.estatus
+/h1 = @report.solicitud_id
+/h1 = @report.tipo_servicio
+/h1 = @report.detalle_servicio
+/h1 = @report.estatus
+
+.container
+  br
+  .row
+    .col.s8
+      h4.center Detalles de Reporte
+
+  br
+  .row
+    .col.s12.m6.l6
+      .description-item
+        span Id de Solicidud: 
+        = @report.solicitud_id
+      .description-item
+        span Tipo de Servicio: 
+        = ServiceType.key_for(@report.tipo_servicio).to_s.humanize
+        /= @report.tipo_servicio
+      .description-item
+        span Detalle de Servicio: 
+        = @report.detalle_servicio
+
+
+    
+ 
